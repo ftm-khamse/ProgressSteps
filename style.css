@@ -3,6 +3,10 @@
     --empty-bg:#e0f0c6;
     --fill-step-bg:#a05386;
     --empty-step-bg:#dbb8cf;
+    --fill-circle-bg:#6c6cf1;
+    --empty-circle-bg:#b3b3ec;
+    --fill-line-bg:#f3f35c;
+    --empty-line-bg:#f0f0bb;
 }
 
 *{
@@ -157,4 +161,50 @@ body{
 
 .btn-step:disabled{
     background: var(--empty-step-bg);
+}
+
+/* circle progress step styles */
+.circle{
+    width: 100px;
+    height: 100px;
+    background: conic-gradient(var(--fill-circle-bg) 0% 0%,var(--empty-circle-bg) 0% 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+    transition: .4s ease;
+    font-weight: bold;
+}
+
+.btn-circle{
+    background: var(--fill-circle-bg);
+}
+
+.btn-circle:disabled{
+    background: var(--empty-circle-bg);
+}
+
+/* line progress step styles */
+.line{
+    --p:0;
+    background: linear-gradient(to right, var(--fill-line-bg) 0 calc(var(--p)*1%),
+    var(--empty-line-bg) calc(var(--p)* 1%) 100%);
+    margin-top: 4rem;
+    position: relative;
+    width: 400px;
+    height: .5rem;
+    border-radius: .5rem;
+
+}
+
+
+.btn-line{
+    background: var(--fill-line-bg);
+    margin-top: 4rem;
+}
+
+.btn-line:disabled{
+    background:var(--empty-line-bg) ;
 }

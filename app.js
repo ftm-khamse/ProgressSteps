@@ -7,8 +7,20 @@ const nextStep = document.getElementById('next-step');
 const prevStep = document.getElementById('prev-step');
 const steps = document.querySelectorAll('.step');
 
+const nextCircle = document.getElementById('next-circle');
+const prevCircle = document.getElementById('prev-circle');
+const circle = document.getElementById('circle');
+const value = document.getElementById('value');
+
+const nextLine = document.getElementById('next-line');
+const prevLine = document.getElementById('prev-line');
+const line = document.getElementById('line');
+
+
 let currentActive = 1;
 let stepActive = 1;
+let circleActive = 0 ;
+let lineActive = 0 ;
 
 function updateUI({ elements, activeIndex, activeClass, progressBar, prevBtn, nextBtn }) {
     elements.forEach((el, idx) => {
@@ -70,4 +82,45 @@ prevStep.addEventListener('click', () => {
         prevBtn: prevStep,
         nextBtn: nextStep
     });
+});
+
+function updateCircle(){
+    circle.style.background = 
+    `conic-gradient(var(--fill-circle-bg) 0% ${circleActive}%,var(--empty-circle-bg) ${circleActive}% 100%)`;
+    value.textContent = `${circleActive}%`;
+
+    prevCircle.disabled = circleActive === 0 ;
+    nextCircle.disabled = circleActive === 100 ;
+}
+
+nextCircle.addEventListener('click',() => {
+    if(circleActive < 100){
+        circleActive +=20;
+
+        updateCircle();
+    }
+});
+
+prevCircle.addEventListener('click',() => {
+    if(circleActive > 0){
+        circleActive -=20;
+
+        updateCircle();
+    }
+});
+
+nextLine.addEventListener('click',() => {
+    lineActive = Math.min(100,lineActive+20);
+    line.style.setProperty('--p',lineActive);
+
+    nextLine.disabled = lineActive === 100;
+    prevLine.disabled = lineActive === 0;
+});
+
+prevLine.addEventListener('click',() => {
+    lineActive = Math.max(0,lineActive-20);
+    line.style.setProperty('--p',lineActive);
+
+    prevLine.disabled = lineActive === 0;
+    nextLine.disabled = lineActive === 100;
 });
