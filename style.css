@@ -1,6 +1,8 @@
 :root {
     --fill-bg:#83eb83;
     --empty-bg:#e0f0c6;
+    --fill-step-bg:#a05386;
+    --empty-step-bg:#dbb8cf;
 }
 
 *{
@@ -8,19 +10,19 @@
 }
 
 body{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(30rem,1fr));
+    
 }
 
 .container {
+    justify-items: center;
     text-align: center;
     border: 2px solid var(--empty-bg);
     padding: 4rem;
     border-radius: 2rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+    margin: 2rem;
 }
 
 .progress-container{
@@ -53,9 +55,11 @@ body{
     width: 0%;
     z-index: -1;
     transition: .4s ease;
+    
 }
 
 .square{
+    
     height: 1.7rem;
     width: 1.7rem;
     border: 3px solid var(--empty-bg);
@@ -98,4 +102,59 @@ body{
 
 .btn:disabled{
     background-color: var(--empty-bg);
+}
+
+/* second progress step styles */
+.step-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem ;
+    width: 350px;
+    
+}
+
+.step{
+    background: var(--empty-step-bg);
+    height: 3rem;
+    width: 5.5rem;
+    clip-path: polygon(0% 0%, 75% 0%, 100% 50%, 75% 100%, 0% 100%);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    transition: .4s ease;
+}
+
+.step.active-step{
+    background: var(--fill-step-bg);
+}
+
+.step-two{
+    clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 25% 50%, 0% 0%);
+    transform: translateX(-1.3rem);
+}
+
+.step-tree{
+    clip-path: polygon(100% 0, 100% 50%, 100% 100%, 0% 100%, 25% 50%, 0% 0%);
+    transform: translateX(-2.6rem);
+}
+
+.btn-step{
+    background: var(--fill-step-bg);
+}
+
+.btn-step:hover{
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.btn-step:active{
+    transform: translateY(0);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+}
+
+.btn-step:disabled{
+    background: var(--empty-step-bg);
 }
