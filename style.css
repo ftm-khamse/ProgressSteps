@@ -6,7 +6,7 @@
     --fill-circle-bg:#6c6cf1;
     --empty-circle-bg:#b3b3ec;
     --fill-line-bg:#f3f35c;
-    --empty-line-bg:#f0f0bb;
+    --empty-line-bg:#f7f7ef;
 }
 
 *{
@@ -35,7 +35,8 @@ body{
     justify-content: space-between;
     margin-bottom: 1.5rem;
     position: relative;
-    width: 350px;
+    width: 100%;
+    max-width: 350px;
     /* background: red; */
 }
 
@@ -114,8 +115,8 @@ body{
     align-items: center;
     justify-content: center;
     margin-bottom: 1.5rem ;
-    width: 350px;
-    
+    width: 100%;
+    max-width: 350px;
 }
 
 .step{
@@ -193,7 +194,8 @@ body{
     var(--empty-line-bg) calc(var(--p)* 1%) 100%);
     margin-top: 4rem;
     position: relative;
-    width: 30rem;
+    width: 100%;
+    max-width: 30rem;
     height: .5rem;
     border-radius: .5rem;
 
@@ -210,19 +212,29 @@ body{
 }
 
 /* media queries */
-@media (min-width:976px){
-    .progress-container{
-        text-align: center;
-    }
-    .line{
-        width: 25rem;
-    }
-}
 @media (max-width:768px){
-    .progress-container{
-        text-align: center;
+    body{
+        grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+        justify-items: center;
+    }
+    .container{
+        width: 100%;
+    }
+    .progress-container,
+    .step-container{
+        max-width: 100%;
     }
     .line{
-        width: 20rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    .square{
+        font-size: .9rem;
+        padding: 0 .5rem;
+    }
+    .circle{
+        width: 80px;
+        height: 80px;
+        font-size: .9rem;
     }
 }
